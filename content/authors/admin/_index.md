@@ -1,13 +1,13 @@
 ---
 # Display name
-title: 吳健雄
+title: 卢彦作
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: Oliver Yanzuo Lu
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Yanzuo
+last_name: Lu
 
 # Status emoji
 status:
@@ -78,7 +78,7 @@ education:
     date_end: 2020-12-31
     summary: |
       GPA: 3.4/4.0
-      
+
       Courses included:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
