@@ -12,23 +12,78 @@
             padding: 0;
         }
     </style>
+    <style>
+        .avatar-container {
+            perspective: 1000px;
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            cursor: pointer;
+        }
+
+        .avatar-flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .avatar-flipper.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .avatar-front,
+        .avatar-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .avatar-back {
+            transform: rotateY(180deg);
+        }
+
+        .avatar-front img,
+        .avatar-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 0;
+        }
+    </style>
     <meta charset="utf-8">
     <link rel="icon" href="icon.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="icon.png">
 </head>
 
 <body bgcolor="#FFFFFF" link="#444444" text="#444444">
-    <table border="0" id="table1" width="720">
+    <table border="0" id="table1" width="800">
         <tbody>
             <tr>
-                <td width="323">
-                    <p align="center">
-                        <font face="Arial">
-                            <img border="0" src="avatar.png" width="172.8" height="230.4">
-                        </font>
-                    </p>
+                <td width="350">
+                <p align="center" style="margin: 30px 0;">
+                <div class="avatar-container">
+                <div class="avatar-flipper" id="avatarFlipper">
+                    <div class="avatar-front">
+                    <img src="icon.png" width="200" height="200" alt="头像1">
+                    </div>
+                    <div class="avatar-back">
+                    <img src="avatar.png" width="200" height="200" alt="头像2">
+                    </div>
+                </div>
+                </div>
+                </p>
                 </td>
-                <td>
+                <script>
+                    document.getElementById('avatarFlipper').addEventListener('click', function () {
+                        this.classList.toggle('flipped');
+                    });
+                </script>
+                <td width="450">
                     <font face="Arial" size="5">
                         <b>
                             Oliver Yanzuo Lu <span lang="zh-cn">卢彦作</span>
@@ -43,6 +98,9 @@
                     <p>
                         <font face="Arial" style="font-size: 11pt;">Contact: oliveryanzuolu AT gmail DOT com</font>
                     </p>
+                    <p>
+                        <font face="Arial" style="font-size: 11pt;" color="red"><b><- Click my avatar to find me :)</b></font>
+                    </p>
                 </td>
             </tr>
         </tbody>
@@ -53,12 +111,17 @@
                 <td style="border-style: none; border-width: medium;">
                     <p style="margin-top: 3px; margin-bottom: 3px;">
                         <font face="Arial" style="font-size: 11pt;">
-                            👋 Hi, this is Yanzuo Lu from China, an incoming PhD student at Imperial College London supervised by Prof.
-                            <a href="https://jiankangdeng.github.io/"><font color="#444444">Jiankang Deng</font></a>.
+                            👋 Hi, this is Yanzuo Lu, an incoming PhD student at Imperial College London supervised by
+                            Prof.
+                            <a href="https://jiankangdeng.github.io/">
+                                <font color="#444444">Jiankang Deng</font></a>.
                             Currently I am also a research intern at ByteDance Seed, mentored by
-                            <a href="https://scholar.google.com/citations?user=C_6JH-IAAAAJ&hl=zh-CN"><font color="#444444">Yuxi Ren</font></a> &
-                            <a href="https://wujie1010.github.io/"><font color="#444444">Jie Wu</font></a> and led by
-                            <a href="https://scholar.google.com/citations?user=CVkM9TQAAAAJ&hl=zh-CN"><font color="#444444">Xuefeng Xiao</font></a>.
+                            <a href="https://scholar.google.com/citations?user=C_6JH-IAAAAJ&hl=zh-CN">
+                                <font color="#444444">Yuxi Ren</font></a> &
+                            <a href="https://wujie1010.github.io/">
+                                <font color="#444444">Jie Wu</font></a> and led by
+                            <a href="https://scholar.google.com/citations?user=CVkM9TQAAAAJ&hl=zh-CN">
+                                <font color="#444444">Xuefeng Xiao</font></a>.
                         </font>
                     </p>
                 </td>
@@ -67,9 +130,12 @@
                 <td style="border-style: none; border-width: medium;">
                     <p style="margin-top: 3px; margin-bottom: 3px;">
                         <font face="Arial" style="font-size: 11pt;">
-                            Now my research focus on the efficiency of both generative diffusion models (DMs) and multimodal large language models (MLLMs).
-                            <b>For DMs</b>, I develop diffusion distillation algorithms to reduce sampling steps while maintaining the quality of generated images or videos.
-                            <b>For MLLMs</b>, I develop speculative decoding algorithms to train a draft model for faster inference losslessly with target model verification.
+                            Now my research focus on the efficiency of both generative diffusion models (DMs) and
+                            multimodal large language models (MLLMs).
+                            <b>For DMs</b>, I develop diffusion distillation algorithms to reduce sampling steps while
+                            maintaining the quality of generated images or videos.
+                            <b>For MLLMs</b>, I develop speculative decoding algorithms to train a draft model for
+                            faster inference losslessly with target model verification.
                         </font>
                     </p>
                 </td>
@@ -78,11 +144,16 @@
                 <td style="border-style: none; border-width: medium;">
                     <p style="margin-top: 3px; margin-bottom: 3px;">
                         <font face="Arial" style="font-size: 11pt;">
-                            Previously, I received my MEng and BS degree from Sun Yat-Sen University (SYSU) advised by Prof.
-                            <a href="https://scholar.google.com/citations?user=nhghITMAAAAJ&hl=zh-CN"><font color="#444444">Andy J Ma</font></a>,
-                            <a href="https://scholar.google.com/citations?user=5YZ3kvoAAAAJ&hl=zh-CN"><font color="#444444">Xiaohua Xie</font></a>, and
-                            <a href="https://scholar.google.com/citations?user=w3GjGqoAAAAJ&hl=zh-CN"><font color="#444444">Jianhuang Lai</font></a>,
-                            where I have some experience with customized diffusion models, domain adaptation and person re-identification.
+                            Previously, I received both my MEng and BS degree from Sun Yat-Sen University (SYSU) advised by
+                            Prof.
+                            <a href="https://scholar.google.com/citations?user=nhghITMAAAAJ&hl=zh-CN">
+                                <font color="#444444">Andy J Ma</font></a>,
+                            <a href="https://scholar.google.com/citations?user=5YZ3kvoAAAAJ&hl=zh-CN">
+                                <font color="#444444">Xiaohua Xie</font></a>, and
+                            <a href="https://scholar.google.com/citations?user=w3GjGqoAAAAJ&hl=zh-CN">
+                                <font color="#444444">Jianhuang Lai</font></a>,
+                            where I have some experience with customized diffusion models, domain adaptation and person
+                            re-identification.
                         </font>
                     </p>
                 </td>
@@ -128,20 +199,25 @@
                     <p style="margin-left: 10px; line-height: 150%; margin-top: 8px; margin-bottom: 8px;">
                         <i>
                             <font face="Arial">
-                                Adversarial Distribution Matching for Diffusion Distillation Towards Efficient Image and Video Synthesis
+                                Adversarial Distribution Matching for Diffusion Distillation Towards Efficient Image and
+                                Video Synthesis
                             </font>
                         </i>
                         <br>
                         <font color="#000000" face="Arial" size="2">
-                            <b>Yanzuo Lu</b>, Yuxi Ren, Xin Xia, Shanchuan Lin, Xing Wang, Xuefeng Xiao, Andy J Ma, Xiaohua Xie and Jianhuang Lai
+                            <b>Yanzuo Lu</b>, Yuxi Ren, Xin Xia, Shanchuan Lin, Xing Wang, Xuefeng Xiao, Andy J Ma,
+                            Xiaohua Xie and Jianhuang Lai
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            International Conference on Computer Vision (<b>ICCV</b>), 2025 (<b>Highlight</b>)
+                            International Conference on Computer Vision (<b>ICCV</b>), 2025 (<font color="red">
+                                <b>Highlight</b></font>)
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            <a href="https://arxiv.org/abs/2507.18569"><font color="#808080">arXiv</font></a>
+                            <a href="https://arxiv.org/abs/2507.18569">
+                                <font color="#808080">arXiv</font>
+                            </a>
                         </font>
                 </td>
             </tr>
@@ -162,17 +238,28 @@
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>), 2024 (<b>Highlight</b>)
+                            Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>), 2024 (<font
+                                color="red"><b>Highlight</b></font>)
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            <a href="https://arxiv.org/abs/2402.18078"><font color="#808080">arXiv</font></a>
+                            <a href="https://arxiv.org/abs/2402.18078">
+                                <font color="#808080">arXiv</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://openaccess.thecvf.com/content/CVPR2024/html/Lu_Coarse-to-Fine_Latent_Diffusion_for_Pose-Guided_Person_Image_Synthesis_CVPR_2024_paper.html"><font color="#808080">Publication</font></a>
+                            <a
+                                href="https://openaccess.thecvf.com/content/CVPR2024/html/Lu_Coarse-to-Fine_Latent_Diffusion_for_Pose-Guided_Person_Image_Synthesis_CVPR_2024_paper.html">
+                                <font color="#808080">Publication</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <b><a href="https://github.com/YanzuoLu/CFLD"><font color="#808080" face="Arial" size="2">Code</font></a></b>
+                            <b><a href="https://github.com/YanzuoLu/CFLD">
+                                    <font color="#808080" face="Arial" size="2">Code</font>
+                                </a></b>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://www.bilibili.com/video/BV1dM4m197AG/?share_source=copy_web&vd_source=1a028d0ae8b1c06c1ea9eedb324cf9aa&t=1114"><font color="#808080">Talk</font></a>
+                            <a
+                                href="https://www.bilibili.com/video/BV1dM4m197AG/?share_source=copy_web&vd_source=1a028d0ae8b1c06c1ea9eedb324cf9aa&t=1114">
+                                <font color="#808080">Talk</font>
+                            </a>
                         </font>
                 </td>
             </tr>
@@ -197,15 +284,26 @@
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            <a href="https://arxiv.org/abs/2404.13686"><font color="#808080">arXiv</font></a>
+                            <a href="https://arxiv.org/abs/2404.13686">
+                                <font color="#808080">arXiv</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://openreview.net/forum?id=O5XbOoi0x3&referrer=%5Bthe%20profile%20of%20Yanzuo%20Lu%5D(%2Fprofile%3Fid%3D~Yanzuo_Lu1)"><font color="#808080">Publication</font></a>
+                            <a
+                                href="https://openreview.net/forum?id=O5XbOoi0x3&referrer=%5Bthe%20profile%20of%20Yanzuo%20Lu%5D(%2Fprofile%3Fid%3D~Yanzuo_Lu1)">
+                                <font color="#808080">Publication</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://hyper-sd.github.io"><font color="#808080">Project</font></a>
+                            <a href="https://hyper-sd.github.io">
+                                <font color="#808080">Project</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <b><a href="https://huggingface.co/ByteDance/Hyper-SD"><font color="#808080" face="Arial" size="2">HuggingFace</font></a></b>
+                            <b><a href="https://huggingface.co/ByteDance/Hyper-SD">
+                                    <font color="#808080" face="Arial" size="2">HuggingFace</font>
+                                </a></b>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://mp.weixin.qq.com/s/dqDqlWv1xe-8zayeJCGq8A"><font color="#808080">PR</font></a>
+                            <a href="https://mp.weixin.qq.com/s/dqDqlWv1xe-8zayeJCGq8A">
+                                <font color="#808080">PR</font>
+                            </a>
                         </font>
                 </td>
             </tr>
@@ -229,11 +327,17 @@
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            <a href="https://arxiv.org/abs/2404.04860"><font color="#808080">arXiv</font></a>
+                            <a href="https://arxiv.org/abs/2404.04860">
+                                <font color="#808080">arXiv</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://link.springer.com/chapter/10.1007/978-3-031-72646-0_11"><font color="#808080">Publication</font></a>
+                            <a href="https://link.springer.com/chapter/10.1007/978-3-031-72646-0_11">
+                                <font color="#808080">Publication</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://byte-edit.github.io/"><font color="#808080">Project</font></a>
+                            <a href="https://byte-edit.github.io/">
+                                <font color="#808080">Project</font>
+                            </a>
                         </font>
                 </td>
             </tr>
@@ -257,11 +361,17 @@
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            <a href="https://arxiv.org/abs/2312.07871"><font color="#808080">arXiv</font></a>
+                            <a href="https://arxiv.org/abs/2312.07871">
+                                <font color="#808080">arXiv</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/28182"><font color="#808080">Publication</font></a>
+                            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/28182">
+                                <font color="#808080">Publication</font>
+                            </a>
                             &nbsp;&nbsp;&nbsp;
-                            <b><a href="https://github.com/YanzuoLu/MLNet"><font color="#808080" face="Arial" size="2">Code</font></a></b>
+                            <b><a href="https://github.com/YanzuoLu/MLNet">
+                                    <font color="#808080" face="Arial" size="2">Code</font>
+                                </a></b>
                         </font>
                 </td>
             </tr>
@@ -285,7 +395,9 @@
                         </font>
                         <br>
                         <font face="Arial" size="2">
-                            <a href="https://dl.acm.org/doi/abs/10.1145/3581783.3612211"><font color="#808080">Publication</font></a>
+                            <a href="https://dl.acm.org/doi/abs/10.1145/3581783.3612211">
+                                <font color="#808080">Publication</font>
+                            </a>
                         </font>
                 </td>
             </tr>
